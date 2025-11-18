@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "functions": {
+    "api/**/*.php": {
+      "runtime": "@vercel/php"
+    },
+    "about.php": {
+      "runtime": "@vercel/php"
+    },
+    "index.php": {
+      "runtime": "@vercel/php"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1.php"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.php"
+    },
+    {
+      "source": "/",
+      "destination": "/index.php"
+    }
+  ]
+}
