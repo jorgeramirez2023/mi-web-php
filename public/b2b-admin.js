@@ -152,7 +152,7 @@ if (/^\/orders\/\d+\/edit$/.test(window.location.pathname)) {
         /////////////////////////////////////////////////////////
         cin7_order_html = "";
         document.body.style.cursor = 'wait';
-        fetch(`https://kfstore.azurewebsites.net/layer.php?process=b2b_get_cin7_orders_links&b2b_order_id=` + encodeURIComponent(b2b_order_id), {
+        fetch(`https://mi-web-php-ddov.vercel.app/api/layer.php?process=b2b_get_cin7_orders_links&b2b_order_id=` + encodeURIComponent(b2b_order_id), {
             method: 'GET'
         })
         .then(layerReply => layerReply.json())
@@ -404,7 +404,7 @@ if (window.location.pathname.startsWith('/products/') && window.location.pathnam
 
           if (confirmation.isConfirmed) {
               // Construct the API URL
-              const getURL = `https://kfstore.azurewebsites.net/layer.php?process=sync_product&op_pro_main_code=${main_sku}&op_pro_variant_code=${userInput}`;
+              const getURL = `https://mi-web-php-ddov.vercel.app/api/layer.php?process=sync_product&op_pro_main_code=${main_sku}&op_pro_variant_code=${userInput}`;
               //const getURL = `sync_Product.php?main_sku=${main_sku}&product_sku=${userInput}`;
 
               try {
@@ -488,7 +488,7 @@ if (window.location.pathname.startsWith('/products/')) {
       async function fetchSuppliers() {
           try {
               // Construct the URL with query parameters
-              const url = new URL('https://kfstore.azurewebsites.net/layer.php?process=cin7_getSuppliersForB2B');
+              const url = new URL('https://mi-web-php-ddov.vercel.app/api/layer.php?process=cin7_getSuppliersForB2B');
               // Fetch the data
               const response = await fetch(url.toString(), {
                   method: 'GET',
@@ -1068,7 +1068,7 @@ if (window.location.pathname.startsWith('/products/')) {
               document.body.style.cursor = 'wait';
 
               // Perform the Fetch request
-              const response = await fetch(`https://kfstore.azurewebsites.net/layer.php?process=b2b_ctrl_m_options&group=${param}`);
+              const response = await fetch(`https://mi-web-php-ddov.vercel.app/api/layer.php?process=b2b_ctrl_m_options&group=${param}`);
               if (!response.ok) {
                   throw new Error(`HTTP error! status: ${response.status}`);
               }
@@ -1237,7 +1237,7 @@ if (window.location.pathname.startsWith('/products/')) {
       // Function to fetch product prices
       async function fetchProductPrices() {
           try {
-              const response = await fetch("https://kfstore.azurewebsites.net/layer.php?process=b2b_ctrl_b_prices");
+              const response = await fetch("https://mi-web-php-ddov.vercel.app/api/layer.php?process=b2b_ctrl_b_prices");
               if (!response.ok) {
                   throw new Error(`Error fetching product prices: ${response.statusText}`);
               }
@@ -1251,7 +1251,7 @@ if (window.location.pathname.startsWith('/products/')) {
       // Function to fetch products by category
       async function fetchProductsByCategory(categoryID) {
           try {
-              const response = await fetch(`https://kfstore.azurewebsites.net/layer.php?process=b2b_ctrl_b_ProByCat&category_id_eq=${categoryID}`);
+              const response = await fetch(`https://mi-web-php-ddov.vercel.app/api/layer.php?process=b2b_ctrl_b_ProByCat&category_id_eq=${categoryID}`);
               if (!response.ok) {
                   throw new Error(`Error fetching category ${categoryID}: ${response.statusText}`);
               }
@@ -1614,7 +1614,7 @@ if (window.location.pathname === '/admin/options/new' || /^\/admin\/options\/\d+
 
                     console.log(`### oGroupCode: ${oGroupCode}, oGroupName: ${oGroupName}, oValueCode: ${oValueCode}, oValueName: ${oValueName}`);                    
 
-                    const response = await fetch(`https://kfstore.azurewebsites.net/b2bScripts/b2b_convert_options.php?oGroup_Code=${oGroupCode}&oGroup_Name=${oGroupName}&oValue_Code=${oValueCode}&oValue_Name=${oValueName}`);
+                    const response = await fetch(`https://mi-web-php-ddov.vercel.app/api/b2bScripts/b2b_convert_options.php?oGroup_Code=${oGroupCode}&oGroup_Name=${oGroupName}&oValue_Code=${oValueCode}&oValue_Name=${oValueName}`);
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }

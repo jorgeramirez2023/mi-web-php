@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.cursor = 'wait';
 
     // Perform the AJAX request using fetch
-    fetch(`https://kfstore.azurewebsites.net/layer.php?process=b2b_calc_shippingFee&b2b_order_id=${b2b_soID}&mode=production`, {
+    fetch(`https://mi-web-php-ddov.vercel.app/api/layer.php?process=b2b_calc_shippingFee&b2b_order_id=${b2b_soID}&mode=production`, {
       method: 'GET',
     })
     .then(layerReply => layerReply.json())
@@ -166,7 +166,7 @@ if (window.location.href.indexOf('orders/confirm_order') >=0) {
 
               // Set cursor to "wait"
               document.body.style.cursor = 'wait';
-              await fetch(`https://kfstore.azurewebsites.net/layer.php?process=b2b_validate_rushItem&b2b_order_id=${b2b_soID}&in_store=${inStore}`, {
+              await fetch(`https://mi-web-php-ddov.vercel.app/api/layer.php?process=b2b_validate_rushItem&b2b_order_id=${b2b_soID}&in_store=${inStore}`, {
                   method: 'GET'
               })
               .then(layerReply => layerReply.json())
