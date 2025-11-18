@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
           } else {
             // If not found, reload
             console.error('NOT FOUND Shipping Cost label');
-            //location.reload();
+            location.reload();
           }
       }
     })
