@@ -49,6 +49,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });    
 }
 
+///////////////////////////////////////////////////////////////
+function loopURL() {
+    clave = "loop";
+    const params = new URLSearchParams(window.location.search);
+    const valorActual = parseInt(params.get(clave) || "0", 10);
+
+    if (valorActual === 3) {
+        console.log("El contador ya llegó a 3. No se recarga.");
+        return; // Detiene la función
+    } 
+    const nuevoValor = valorActual + 1;
+    params.set(clave, nuevoValor); 
+    const nuevaQueryString = params.toString();
+    window.location.href = window.location.pathname + "?" + nuevaQueryString;
+}
 
 ////////////////////////////////////////////////////////
 // Shipping Cost
@@ -91,18 +106,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (shippingCostCell) {
             console.error('FOUND Shipping Cost label');
-            // If found, edit
+            // FOR EDITING ORDERS; OR ALSO...
+            // ...WHEN YOU GO BACK FROM CHECKOUT PAGE TO SUMMARY PAGE AND THEN GET BACK AGAIN TO CHECKOUT PAGE
             const currentShippingCost = shippingCostCell.textContent.trim();
             const currentShippingCostNumber = parseFloat(currentShippingCost.replace('$', ''));
             //
             if (currentShippingCostNumber !== layerBody.shipping_cost) {
               console.error(currentShippingCostNumber + ' vs ' + layerBody.shipping_cost);
               //location.reload();
+              loopURL();
             }
           } else {
-            // If not found, reload
+            // GENERALLY FOR NEW ORDERS, OR FIRST TIME YOU VISIT THE CHECKOUT PAGE
+            // If not found, RELOAD, because the shipping_cost php method has created the Shipping Field in the order
+            // and it will appear when page is refreshed
             console.error('NOT FOUND Shipping Cost label');
-            location.reload();
+            //location.reload();
+            loopURL();
           }
       }
     })
