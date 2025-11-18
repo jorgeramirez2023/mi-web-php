@@ -1,0 +1,4 @@
+#category-list>table.preferred-products>thead>tr>th.qty,
+#category-list>table.preferred-products>tbody>tr>td.qty {
+    display: none;    
+}
