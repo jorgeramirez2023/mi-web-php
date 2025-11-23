@@ -67,21 +67,22 @@ else if ($process == "cin7_getSuppliersForB2B") {
     $response = invokeURL($request_url, [], "GET",  []);
 }
 else if ($process == "sync_product") {
-    if (!isset($_GET["op_pro_id"])) {
-        $json = json_encode(["success" => false, "validation_msg" => "'op_pro_id' parameter was not provided"]);
+    if (!isset($_GET["op_pro_main_code"])) {
+        $json = json_encode(["success" => false, "validation_msg" => "'op_pro_main_code' parameter was not provided"]);
         echo $json;        
         exit();
     }
+
     if (!isset($_GET["op_pro_variant_code"])) {
         $json = json_encode(["success" => false, "validation_msg" => "'op_pro_variant_code' parameter was not provided"]);
         echo $json;        
         exit();
     }
     //
-    $op_pro_id = $_GET["op_pro_id"];
+    $op_pro_main_code = $_GET["op_pro_main_code"];
     $op_pro_variant_code = $_GET["op_pro_variant_code"];
     //
-    $request_url = $zc_url . "/sync_product?publickey=n4uvny5MsTmrrPQ4PUDdkdRKR?op_pro_id=" . $op_pro_id . "&op_pro_variant_code=" . $op_pro_variant_code;
+    $request_url = $zc_url . "/sync_product?publickey=n4uvny5MsTmrrPQ4PUDdkdRKR?op_pro_main_code=" . $op_pro_main_code . "&op_pro_variant_code=" . $op_pro_variant_code;
     $response = invokeURL($request_url, [], "GET",  []);
 }
 else if ($process == "b2b_ctrl_m_options") {
