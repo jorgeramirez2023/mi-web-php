@@ -403,6 +403,7 @@ if (window.location.pathname.startsWith('/products/') && window.location.pathnam
           });
 
           if (confirmation.isConfirmed) {
+              console.log(`main_sku: ${main_sku}, userInput: ${userInput}`);
               // Construct the API URL
               const getURL = `https://mi-web-php-ddov.vercel.app/api/layer.php?process=sync_product&op_pro_main_code=${main_sku}&op_pro_variant_code=${userInput}`;
               //const getURL = `sync_Product.php?main_sku=${main_sku}&product_sku=${userInput}`;
