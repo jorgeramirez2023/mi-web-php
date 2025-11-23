@@ -81,8 +81,8 @@ else if ($process == "sync_product") {
     //
     $op_pro_main_code = $_GET["op_pro_main_code"];
     $op_pro_variant_code = $_GET["op_pro_variant_code"];
-    //
-    $request_url = $zc_url . "/sync_product?publickey=n4uvny5MsTmrrPQ4PUDdkdRKR?op_pro_main_code=" . $op_pro_main_code . "&op_pro_variant_code=" . $op_pro_variant_code;
+    //    
+    $request_url = $zc_url . "/sync_product?publickey=n4uvny5MsTmrrPQ4PUDdkdRKR&op_pro_main_code=" . $op_pro_main_code . "&op_pro_variant_code=" . $op_pro_variant_code;
     $response = invokeURL($request_url, [], "GET",  []);
 }
 else if ($process == "b2b_ctrl_m_options") {
@@ -94,7 +94,7 @@ else if ($process == "b2b_ctrl_m_options") {
     //
     $group = $_GET["group"];
     //
-    $request_url = $zc_url . "/b2b_ctrl_m_options?publickey=dXezYBYd4awOtwTNPrTFAbusy?group=" . $group;
+    $request_url = $zc_url . "/b2b_ctrl_m_options?publickey=dXezYBYd4awOtwTNPrTFAbusy&group=" . $group;
     $response = invokeURL($request_url, [], "GET",  []);    
 }
 else if ($process == "b2b_ctrl_b_prices") {
@@ -110,7 +110,7 @@ else if ($process == "b2b_ctrl_b_ProByCat") {
     //
     $category_id_eq = $_GET["category_id_eq"];
     //
-    $request_url = $zc_url . "/b2b_ctrl_b_ProByCat?publickey=PDYy2Zk2G6nqOhdqEVwr173Qu?category_id_eq=" . $category_id_eq;
+    $request_url = $zc_url . "/b2b_ctrl_b_ProByCat?publickey=PDYy2Zk2G6nqOhdqEVwr173Qu&category_id_eq=" . $category_id_eq;
     $response = invokeURL($request_url, [], "GET",  []);        
 }
 
